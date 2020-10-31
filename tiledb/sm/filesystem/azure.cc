@@ -180,6 +180,9 @@ Status Azure::create_container(const URI& uri) const {
 
   azure::storage_lite::storage_outcome<void> outcome = result.get();
   if (!outcome.success()) {
+    LOG_ERROR(
+        "TODO JOE: " + outcome.error().message + ", " +
+        outcome.error().code_name + ", " + outcome.error().code);
     return LOG_STATUS(Status::AzureError(
         std::string("Create container failed on: " + uri.to_string())));
   }
@@ -319,6 +322,9 @@ Status Azure::flush_blob(const URI& uri) {
 
   azure::storage_lite::storage_outcome<void> outcome = result.get();
   if (!outcome.success()) {
+    LOG_ERROR(
+        "TODO JOE: " + outcome.error().message + ", " +
+        outcome.error().code_name + ", " + outcome.error().code);
     return LOG_STATUS(Status::AzureError(
         std::string("Flush blob failed on: " + uri.to_string())));
   }
@@ -381,6 +387,9 @@ Status Azure::flush_blob_direct(const URI& uri) {
 
   azure::storage_lite::storage_outcome<void> outcome = result.get();
   if (!outcome.success()) {
+    LOG_ERROR(
+        "TODO JOE: " + outcome.error().message + ", " +
+        outcome.error().code_name + ", " + outcome.error().code);
     return LOG_STATUS(Status::AzureError(
         std::string("Flush blob failed on: " + uri.to_string())));
   }
@@ -417,6 +426,9 @@ Status Azure::is_empty_container(const URI& uri, bool* is_empty) const {
       azure::storage_lite::list_blobs_segmented_response>
       outcome = result.get();
   if (!outcome.success()) {
+    LOG_ERROR(
+        "TODO JOE: " + outcome.error().message + ", " +
+        outcome.error().code_name + ", " + outcome.error().code);
     return LOG_STATUS(Status::AzureError(
         std::string("List blobs failed on: " + uri.to_string())));
   }
@@ -459,6 +471,9 @@ Status Azure::is_container(
   azure::storage_lite::storage_outcome<azure::storage_lite::container_property>
       outcome = result.get();
   if (!outcome.success()) {
+    LOG_ERROR(
+        "TODO JOE: " + outcome.error().message + ", " +
+        outcome.error().code_name + ", " + outcome.error().code);
     *is_container = false;
     return Status::Ok();
   }
@@ -507,6 +522,9 @@ Status Azure::is_blob(
   azure::storage_lite::storage_outcome<azure::storage_lite::blob_property>
       outcome = result.get();
   if (!outcome.success()) {
+    LOG_ERROR(
+        "TODO JOE: " + outcome.error().message + ", " +
+        outcome.error().code_name + ", " + outcome.error().code);
     *is_blob = false;
     return Status::Ok();
   }
@@ -579,6 +597,9 @@ Status Azure::ls(
         azure::storage_lite::list_blobs_segmented_response>
         outcome = result.get();
     if (!outcome.success()) {
+      LOG_ERROR(
+          "TODO JOE: " + outcome.error().message + ", " +
+          outcome.error().code_name + ", " + outcome.error().code);
       return LOG_STATUS(Status::AzureError(
           std::string("List blobs failed on: " + uri_dir.to_string())));
     }
@@ -636,6 +657,9 @@ Status Azure::copy_blob(const URI& old_uri, const URI& new_uri) {
 
   azure::storage_lite::storage_outcome<void> outcome = result.get();
   if (!outcome.success()) {
+    LOG_ERROR(
+        "TODO JOE: " + outcome.error().message + ", " +
+        outcome.error().code_name + ", " + outcome.error().code);
     return LOG_STATUS(Status::AzureError(
         std::string("Copy blob failed on: " + old_uri.to_string())));
   }
@@ -722,6 +746,9 @@ Status Azure::blob_size(const URI& uri, uint64_t* const nbytes) const {
       azure::storage_lite::list_blobs_segmented_response>
       outcome = result.get();
   if (!outcome.success()) {
+    LOG_ERROR(
+        "TODO JOE: " + outcome.error().message + ", " +
+        outcome.error().code_name + ", " + outcome.error().code);
     return LOG_STATUS(Status::AzureError(
         std::string("Get blob size failed on: " + uri.to_string())));
   }
@@ -771,6 +798,9 @@ Status Azure::read(
 
   azure::storage_lite::storage_outcome<void> outcome = result.get();
   if (!outcome.success()) {
+    LOG_ERROR(
+        "TODO JOE: " + outcome.error().message + ", " +
+        outcome.error().code_name + ", " + outcome.error().code);
     return LOG_STATUS(Status::AzureError(
         std::string("Read blob failed on: " + uri.to_string())));
   }
@@ -804,6 +834,9 @@ Status Azure::remove_container(const URI& uri) const {
 
   azure::storage_lite::storage_outcome<void> outcome = result.get();
   if (!outcome.success()) {
+    LOG_ERROR(
+        "TODO JOE: " + outcome.error().message + ", " +
+        outcome.error().code_name + ", " + outcome.error().code);
     return LOG_STATUS(Status::AzureError(
         std::string("Remove container failed on: " + uri.to_string())));
   }
@@ -828,6 +861,9 @@ Status Azure::remove_blob(const URI& uri) const {
 
   azure::storage_lite::storage_outcome<void> outcome = result.get();
   if (!outcome.success()) {
+    LOG_ERROR(
+        "TODO JOE: " + outcome.error().message + ", " +
+        outcome.error().code_name + ", " + outcome.error().code);
     return LOG_STATUS(Status::AzureError(
         std::string("Remove blob failed on: " + uri.to_string())));
   }
@@ -882,6 +918,9 @@ Status Azure::touch(const URI& uri) const {
 
   azure::storage_lite::storage_outcome<void> outcome = result.get();
   if (!outcome.success()) {
+    LOG_ERROR(
+        "TODO JOE: " + outcome.error().message + ", " +
+        outcome.error().code_name + ", " + outcome.error().code);
     return LOG_STATUS(Status::AzureError(
         std::string("Touch blob failed on: " + uri.to_string())));
   }
@@ -1116,6 +1155,9 @@ Status Azure::upload_block(
 
   azure::storage_lite::storage_outcome<void> outcome = result.get();
   if (!outcome.success()) {
+    LOG_ERROR(
+        "TODO JOE: " + outcome.error().message + ", " +
+        outcome.error().code_name + ", " + outcome.error().code);
     return LOG_STATUS(Status::AzureError(
         std::string("Upload block failed on: " + blob_path)));
   }
